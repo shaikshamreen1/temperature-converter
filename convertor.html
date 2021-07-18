@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<style>
+		body
+		{  
+			background-image: linear-gradient(to bottom right,#F88379, #87CEFA);
+			background-size:auto;
+			
+ 			background-repeat: no-repeat; 
+ 			
+ 			color:black;
+ 			font-family:Times New Roman; 
+    		}
+		img {
+			 height:500px;
+ 			width: 800px;
+ 			 border-radius: 15%;
+  			padding:25px
+		}
+		.box{
+  		 width:400px;
+ 		 border-radius:20px;
+ 		 margin:auto;
+ 		 background:rgb(0,0,0,0.8);
+ 	     	 box-sizing:border-box;
+ 		 padding:40px;
+		 color:#ffb6c1;
+		 position: absolute;
+		 margin-top:-500px;
+		 left:900px;
+  		}
+		.formulae
+		{
+		position: absolute;
+		 margin-top:-150px;
+		 left:900px;
+		font-size:20px;
+		}
+
+		</style>	
+	</head>
+	<body>
+		<h1 align="center">Temperature Converter Website</h1>
+		<img src="cartoon.png">
+		
+	<div class="box">
+		<h3>Celsius  &nbsp&nbsp&nbsp&nbsp&nbsp<input type="number"  autofocus="" placeholder="Enter the temperature" value="" id="cel"/></h3>
+		<h3>Farenheit &nbsp<input type="number" value="" id="fah"/></h3>
+		<h3>Kelvin &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="number" value="" id="kev"/></h3>
+		<h3>Reaumur &nbsp<input type="number" value="" id="rea"/></h3>
+		<h3>Rankine &nbsp&nbsp&nbsp<input type="number" value="" id="ran"/></h3>
+		<script>
+			var cel=document.getElementById("cel");
+			var fah=document.getElementById("fah");
+			var kev=document.getElementById("kev");
+			var rea=document.getElementById("rea");
+			var ran=document.getElementById("ran");
+			cel.addEventListener('input',function(){
+				let c=this.value;
+				let t=(c*9/5)+32;
+				let k=c-273.15;
+				let r=(c+273.15)*9/5;
+				if(!Number.isInteger(t)){
+					t=t.toFixed(4);
+				}
+				if(!Number.isInteger(r)){
+					r=r.toFixed(4);
+				}
+				kev.value=k;
+				fah.value=t;	
+				c=c*4/5;
+				if(!Number.isInteger(c)){
+					c=c.toFixed(4);
+				}
+				rea.value=c;
+				ran.value=r;
+			});
+			fah.addEventListener('input',function(){
+				let f=this.value;
+				let c=(f-32)*5/9;
+				if(!Number.isInteger(c)){
+					c=c.toFixed(4);
+				}
+				cel.value=c;
+				c=c-273.15;
+				if(!Number.isInteger(c)){
+					c=c.toFixed(4);
+				}
+				kev.value=c;
+				f=(f-32)*4/9;
+				if(!Number.isInteger(f)){
+					f=f.toFixed(4);
+				}
+				rea.value=f;
+				let ra=parseFloat(f)+parseFloat('459.69');
+				ran.value=ra;
+			});
+			kev.addEventListener('input',function(){
+				let k=this.value;
+				let c=k+273.15;
+				cel.value=c;
+				let f=(k-273.15)*9/5+32;
+				if(!Number.isInteger(f)){
+					f=f.toFixed(4);
+				}
+				fah.value=f;
+				let r=(k-273.15)*4/5;
+				if(!Number.isInteger(r)){
+					r=r.toFixed(4);
+				}
+				let re=k*9/5;
+				if(!Number.isInteger(re)){
+					re=re.toFixed(4);
+				}
+				rea.value=r;
+				ran.value=re;
+			});	
+			rea.addEventListener('input',function(){
+				let r=this.value;
+				let c=r*5/4;
+				let f=r*9/4+32;
+				let k=r*5/4+273.15;
+				let ra=r*9/4+491.67;
+				if(!Number.isInteger(c)){
+					c=c.toFixed(4);
+				}
+				if(!Number.isInteger(f)){
+					f=f.toFixed(4);
+				}
+				if(!Number.isInteger(k)){
+					k=k.toFixed(4);
+				}
+				if(!Number.isInteger(ra)){
+					ra=ra.toFixed(4);
+				}
+				cel.value=c;
+				fah.value=f;
+				kev.value=k;
+				ran.value=ra;
+			});
+			ran.addEventListener('input',function(){
+				let r=this.value;
+				let c=(r-491.67)*5/9;
+				let f=parseFloat(r)-parseFloat('459.67');
+				let k=r*5/9;
+				let re=(r-32-459.67)/2.25;
+				if(!Number.isInteger(c)){
+					c=c.toFixed(4);
+				}
+				if(!Number.isInteger(f)){
+					f=f.toFixed(4);
+				}
+				if(!Number.isInteger(k)){
+					k=k.toFixed(4);
+				}
+				if(!Number.isInteger(re)){
+					re=re.toFixed(4);
+				}
+				cel.value=c;
+				fah.value=f;
+				kev.value=k;
+				rea.value=re;
+			});
+		</script>
+	</div>
+	<div class="formulae">
+	<h3>For Formulas</h3>
+	<a href="login.html">       Click here.....</a>
+	</div>
+	</body>
+</html>
